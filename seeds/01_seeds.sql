@@ -1,7 +1,7 @@
-DELETE FROM users;
-DELETE FROM properties;
-DELETE FROM reservations;
-DELETE FROM property_reviews;
+-- DELETE FROM users;
+-- DELETE FROM properties;
+-- DELETE FROM reservations;
+-- DELETE FROM property_reviews;
 
 INSERT INTO users (name, email, password)
 VALUES ('Armand Hill', 'lera_hahn@dickens.org', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.'),
