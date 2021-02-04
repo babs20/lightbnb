@@ -1,3 +1,5 @@
+/* eslint-disable func-style */
+/* eslint-disable space-before-function-paren */
 $(() => {
   window.header = {};
 
@@ -18,7 +20,7 @@ $(() => {
           <li class="sign-up_button">Sign Up</li>
         </ul>
       </nav>
-      `
+      `;
     } else {
       userLinks = `
       <nav id="page-header__user-links" class="page-header__user-links">
@@ -32,7 +34,7 @@ $(() => {
           <li class="logout_button">Log Out</li>
         </ul>
       </nav>
-      `
+      `;
     }
 
     $pageHeader.append(userLinks);
@@ -41,41 +43,40 @@ $(() => {
   window.header.update = updateHeader;
 
   getMyDetails()
-    .then(function( json ) {
-    updateHeader(json.user);
-  });
+    .then(function (json) {
+      updateHeader(json.user);
+    });
 
-  $("header").on("click", '.my_reservations_button', function() {
+  $("header").on("click", '.my_reservations_button', function () {
     propertyListings.clearListings();
     getAllReservations()
-      .then(function(json) {
+      .then(function (json) {
         propertyListings.addProperties(json.reservations, true);
         views_manager.show('listings');
       })
       .catch(error => console.error(error));
   });
-  $("header").on("click", '.my_listing_button', function() {
+  $("header").on("click", '.my_listing_button', function () {
     propertyListings.clearListings();
     getAllListings(`owner_id=${currentUser.id}`)
-      .then(function(json) {
+      .then(function (json) {
         propertyListings.addProperties(json.properties);
         views_manager.show('listings');
-    });
+      });
   });
 
-  $("header").on("click", '.home', function() {
+  $("header").on("click", '.home', function () {
     propertyListings.clearListings();
     getAllListings()
-      .then(function(json) {
+      .then(function (json) {
         propertyListings.addProperties(json.properties);
         views_manager.show('listings');
-    });
+      });
   });
 
-  $('header').on('click', '.search_button', function() {
+  $('header').on('click', '.search_button', function () {
     views_manager.show('searchProperty');
   });
-
   $("header").on('click', '.login_button', () => {
     views_manager.show('logIn');
   });
@@ -88,7 +89,7 @@ $(() => {
     });
   });
 
-  $('header').on('click', '.create_listing_button', function() {
+  $('header').on('click', '.create_listing_button', function () {
     views_manager.show('newProperty');
   });
 

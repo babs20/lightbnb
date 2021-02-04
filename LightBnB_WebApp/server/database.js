@@ -1,8 +1,5 @@
-/* eslint-disable no-fallthrough */
 /* eslint-disable indent */
 /* eslint-disable space-before-function-paren */
-const properties = require('./json/properties.json');
-const users = require('./json/users.json');
 const { Pool } = require('pg');
 
 const pool = new Pool({
@@ -61,6 +58,22 @@ const addUser = function (user) {
     .catch(err => console.error('Error addUser', err));
 };
 exports.addUser = addUser;
+
+/**
+ * Add a new reservation to the database.
+ * @param {{}} options An object containing query options.
+ */
+const addReservation = function (options) {
+  return pool.query(
+    'INSERT INTO reservations (start_date, end_date, property_id, guest_id) VALUES ($1, $2, $3, $4) RETURNING *;',
+    [options.start_date, options.end_date, Number(options.property_id), Number(options.owner_id)])
+    .then(res => {
+      const result = res.rows.length === 0 ? null : res.rows;
+      return result;
+    })
+    .catch(err => console.error('Error addReservation', err));
+};
+exports.addReservation = addReservation;
 
 /// Reservations
 

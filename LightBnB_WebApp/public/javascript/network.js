@@ -1,3 +1,5 @@
+/* eslint-disable func-style */
+/* eslint-disable no-unused-vars */
 function getMyDetails() {
   console.log("getMyDetails");
   return $.ajax({
@@ -28,6 +30,14 @@ function signUp(data) {
   });
 }
 
+function makeReservation(data) {
+  return $.ajax({
+    method: "POST",
+    url: "/api/reservations",
+    data
+  });
+}
+
 function getAllListings(params) {
   let url = "/api/properties";
   if (params) {
@@ -45,7 +55,7 @@ function getAllReservations() {
   });
 }
 
-const submitProperty = function(data) {
+const submitProperty = function (data) {
   return $.ajax({
     method: "POST",
     url: "/api/properties",

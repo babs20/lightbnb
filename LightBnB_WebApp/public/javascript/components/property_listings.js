@@ -1,3 +1,4 @@
+/* eslint-disable func-style */
 $(() => {
 
   const $propertyListings = $(`
@@ -26,5 +27,4 @@ $(() => {
     }
   }
   window.propertyListings.addProperties = addProperties;
-
 });
